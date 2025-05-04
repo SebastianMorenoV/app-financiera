@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>App Financiera</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Aplicacion Financiera ITSON</h1>
+    <input type="number" id="monto" placeholder="Ingresa un monto" />
+    <div class="botones">
+      <button onclick="registrarEntrada()">Entrada</button>
+      <button onclick="registrarSalida()">Salida</button>
+    </div>
+    <div class="resumen">
+      <p>Total Ahorros: $<span id="totalEntradas">0</span></p>
+      <p>Total Gastos: $<span id="totalSalidas">0</span></p>
+    </div>
+    <div class="grficos">
+      <canvas id="grafico"></canvas>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
