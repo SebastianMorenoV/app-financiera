@@ -1,5 +1,6 @@
 let totalEntradas = 0;
 let totalSalidas = 0;
+let movimientos = [];
 
 const ctx = document.getElementById('grafico').getContext('2d');
 const grafico = new Chart(ctx, {
@@ -25,19 +26,29 @@ const grafico = new Chart(ctx, {
 
 function registrarEntrada() {
   const monto = obtenerMonto();
-  if (monto !== null) {
+  const razon = document.getElementById('razon').value;
+  if (monto !== null && razon.trim() !== '') {
     totalEntradas += monto;
+    registrarMovimiento('entrada', monto, razon);
     actualizarVista();
     actualizarGrafico();
+    document.getElementById('razon').value = '';
+  } else {
+    alert('Ingresa un monto válido y una razón.');
   }
 }
 
 function registrarSalida() {
   const monto = obtenerMonto();
-  if (monto !== null) {
+  const razon = document.getElementById('razon').value;
+  if (monto !== null && razon.trim() !== '') {
     totalSalidas += monto;
+    registrarMovimiento('salida', monto, razon);
     actualizarVista();
     actualizarGrafico();
+    document.getElementById('razon').value = '';
+  } else {
+    alert('Ingresa un monto válido y una razón.');
   }
 }
 
@@ -60,4 +71,23 @@ function actualizarVista() {
 function actualizarGrafico() {
   grafico.data.datasets[0].data = [totalEntradas, totalSalidas];
   grafico.update();
+}
+
+function registrarMovimiento(tipo, monto, razon) {
+  const fechaHora = new Date().toLocaleString();
+  movimientos.unshift({ tipo, monto, razon, fechaHora });
+  actualizarHistorial();
+}
+
+function actualizarHistorial() {
+  const lista = document.getElementById('listaMovimientos');
+  lista.innerHTML = movimientos.length === 0
+    ? '<p class="sin-movimientos">No hay movimientos registrados aún.</p>'
+    : movimientos.map(mov => `
+        <div class="movimiento ${mov.tipo}">
+          <span><strong>${mov.fechaHora}</strong></span>
+          <span>${mov.razon}</span>
+          <span>$${mov.monto.toFixed(2)}</span>
+        </div>
+      `).join('');
 }

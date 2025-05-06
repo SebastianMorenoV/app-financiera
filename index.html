@@ -29,7 +29,7 @@
   <!-- Sección Informativa -->
   <div class="seccion-informativa">
     <h2>¿Qué es el Control Financiero ITSON?</h2>
-    <p>El Control Financiero ITSON es una plataforma educativa desarrollada  con el propósito de:</p>
+    <p>El Control Financiero ITSON es una plataforma educativa desarrollada con el propósito de:</p>
     
     <ul>
       <li>Brindar seguimiento detallado a tus movimientos económicos</li>
@@ -39,27 +39,39 @@
       <li>Prepararte para la gestión financiera profesional</li>
     </ul>
     
-    <p>Esta herramienta se alinea con el compromiso de ITSON de formar profesionales integrales, capacitados no solo en sus áreas disciplinares sino también en el manejo responsable de sus recursos personales.</p>
+    <p>Esta herramienta se alinea con el compromiso de ITSON de formar profesionales integrales.</p>
   </div>
 
-  <!-- Aplicación Financiera -->
-  <div class="container">
-    <h1>Aplicación Financiera ITSON</h1>
-    
-    <input type="number" id="monto" placeholder="Ingresa un monto" step="0.01" min="0" />
-    
-    <div class="botones">
-      <button onclick="registrarEntrada()">Entrada</button>
-      <button onclick="registrarSalida()">Salida</button>
+  <!-- Contenedor Principal (App + Historial) -->
+  <div class="contenedor-app-historial">
+    <!-- Aplicación Financiera (izquierda) -->
+    <div class="container">
+      <h1>Aplicación Financiera ITSON</h1>
+      
+      <input type="text" id="razon" placeholder="Razón del movimiento (ej: Pago de matrícula)" />
+      <input type="number" id="monto" placeholder="Monto (ej: 100.00)" step="0.01" min="0" />
+      
+      <div class="botones">
+        <button onclick="registrarEntrada()">Entrada</button>
+        <button onclick="registrarSalida()">Salida</button>
+      </div>
+      
+      <div class="resumen">
+        <p>Total Ahorros: $<span id="totalEntradas">0</span></p>
+        <p>Total Gastos: $<span id="totalSalidas">0</span></p>
+      </div>
+      
+      <div class="grficos">
+        <canvas id="grafico"></canvas>
+      </div>
     </div>
-    
-    <div class="resumen">
-      <p>Total Ahorros: $<span id="totalEntradas">0</span></p>
-      <p>Total Gastos: $<span id="totalSalidas">0</span></p>
-    </div>
-    
-    <div class="grficos">
-      <canvas id="grafico"></canvas>
+
+    <!-- Historial de Movimientos (derecha) -->
+    <div class="historial-container">
+      <h2>Historial de Movimientos</h2>
+      <div class="lista-movimientos" id="listaMovimientos">
+        <p class="sin-movimientos">No hay movimientos registrados aún.</p>
+      </div>
     </div>
   </div>
 
