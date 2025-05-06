@@ -1,29 +1,68 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>App Financiera</title>
+  <title>App Financiera ITSON</title>
   <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+  <!-- 3 Recuadros superiores -->
+  <div class="fila-superior">
+    <div class="recuadro-info">
+      <h2>Misión</h2>
+      <p>Proporcionar herramientas financieras sencillas para una mejor gestión económica en la comunidad universitaria.</p>
+    </div>
+    
+    <div class="recuadro-info">
+      <h2>Visión</h2>
+      <p>Ser el programa líder en educación financiera para estudiantes a nivel nacional.</p>
+    </div>
+    
+    <div class="recuadro-info">
+      <h2>Objetivo</h2>
+      <p>Fomentar la cultura del ahorro y el manejo responsable de recursos entre los jóvenes.</p>
+    </div>
+  </div>
+
+  <!-- Sección Informativa -->
+  <div class="seccion-informativa">
+    <h2>¿Qué es el Control Financiero ITSON?</h2>
+    <p>El Control Financiero ITSON es una plataforma educativa desarrollada por el Departamento de Finanzas de nuestra universidad con el propósito de:</p>
+    
+    <ul>
+      <li>Brindar seguimiento detallado a tus movimientos económicos</li>
+      <li>Generar reportes personalizados de tus hábitos de consumo</li>
+      <li>Identificar oportunidades de optimización en tus gastos</li>
+      <li>Proyectar metas de ahorro a corto, mediano y largo plazo</li>
+      <li>Prepararte para la gestión financiera profesional</li>
+    </ul>
+    
+    <p>Esta herramienta se alinea con el compromiso de ITSON de formar profesionales integrales, capacitados no solo en sus áreas disciplinares sino también en el manejo responsable de sus recursos personales.</p>
+  </div>
+
+  <!-- Aplicación Financiera -->
   <div class="container">
-    <h1>Aplicacion Financiera ITSON</h1>
-    <input type="number" id="monto" placeholder="Ingresa un monto" />
+    <h1>Aplicación Financiera ITSON</h1>
+    
+    <input type="number" id="monto" placeholder="Ingresa un monto" step="0.01" min="0" />
+    
     <div class="botones">
       <button onclick="registrarEntrada()">Entrada</button>
       <button onclick="registrarSalida()">Salida</button>
     </div>
+    
     <div class="resumen">
       <p>Total Ahorros: $<span id="totalEntradas">0</span></p>
       <p>Total Gastos: $<span id="totalSalidas">0</span></p>
     </div>
+    
     <div class="grficos">
       <canvas id="grafico"></canvas>
     </div>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
